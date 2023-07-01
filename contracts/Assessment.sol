@@ -7,6 +7,7 @@ contract Assessment {
     address payable public owner;
     uint256 public balance;
     uint256 public transactionCount;
+    string public message;
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
@@ -15,6 +16,7 @@ contract Assessment {
         owner = payable(msg.sender);
         balance = initBalance;
         transactionCount=0;
+        
     }
 
     function getBalance() public view returns(uint256){
@@ -64,5 +66,10 @@ contract Assessment {
 
         // emit the event
         emit Withdraw(_withdrawAmount);
+    }
+
+    function accountProfile() public returns (string memory) {
+        message="Hello, I hope your are having fun using our Dapp";
+        return message;
     }
 }
